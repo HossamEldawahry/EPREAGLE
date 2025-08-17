@@ -1,0 +1,333 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BFF854A3-E63C-4DD5-97EB-79995B8A225D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EPREAGLE</RootNamespace>
+    <AssemblyName>EPREAGLE</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Alecive-Flatwoken-Apps-Darktable.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataBaseOperations, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DataBaseOperations.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.BonusSkins.v22.2" />
+    <Reference Include="DevExpress.Charts.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.Desktop.v22.2" />
+    <Reference Include="DevExpress.Data.v22.2" />
+    <Reference Include="DevExpress.Office.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Pdf.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.PivotGrid.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v22.2.Export, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.SpellChecker.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v22.2" />
+    <Reference Include="DevExpress.Utils.v22.2.UI, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v22.2" />
+    <Reference Include="DevExpress.Sparkline.v22.2.Core" />
+    <Reference Include="DevExpress.XtraCharts.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v22.2" />
+    <Reference Include="DevExpress.Printing.v22.2.Core" />
+    <Reference Include="DevExpress.Drawing.v22.2" />
+    <Reference Include="DevExpress.XtraGauges.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v22.2.Extensions, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v22.2.Core, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v22.2.Core.Desktop, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v22.2.Extensions, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpellChecker.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v22.2, Version=22.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MessageBoxes, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\MessageBoxes.dll</HintPath>
+    </Reference>
+    <Reference Include="Notification, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Notification.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountFrm\Frm\frmAccountTree.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountFrm\Frm\frmAccountTree.Designer.cs">
+      <DependentUpon>frmAccountTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountFrm\Services\Classes\FillAccountParents.cs" />
+    <Compile Include="AccountFrm\Services\Classes\GetAccountCode.cs" />
+    <Compile Include="AccountFrm\Services\Interfaces\IFillAccountParents.cs" />
+    <Compile Include="AccountFrm\Services\Interfaces\IGetAccountCode.cs" />
+    <Compile Include="Dataset\dsMove.cs">
+      <DependentUpon>dsMove.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsMove.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsMove.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Data\AccountData.cs" />
+    <Compile Include="Data\GeneralSettings.cs" />
+    <Compile Include="Data\Server.cs" />
+    <Compile Include="Data\User.cs" />
+    <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Extensions\DateExtensions.cs" />
+    <Compile Include="Extensions\DecimalExtensions.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Alarm.cs" />
+    <Compile Include="Helper\ClearControl.cs" />
+    <Compile Include="Helper\Conn.cs" />
+    <Compile Include="Helper\Log.cs" />
+    <Compile Include="MainFrm\Frm\frmAddEditBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmAddEditBank.Designer.cs">
+      <DependentUpon>frmAddEditBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmAddEditSafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmAddEditSafe.Designer.cs">
+      <DependentUpon>frmAddEditSafe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmAddEditWallet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmAddEditWallet.Designer.cs">
+      <DependentUpon>frmAddEditWallet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBankMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBankMove.Designer.cs">
+      <DependentUpon>frmBankMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBanksManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBanksManagement.Designer.cs">
+      <DependentUpon>frmBanksManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBranch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmBranch.Designer.cs">
+      <DependentUpon>frmBranch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmCurrency.Designer.cs">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmSafesManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmSafesManagement.Designer.cs">
+      <DependentUpon>frmSafesManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmSafesMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmSafesMove.Designer.cs">
+      <DependentUpon>frmSafesMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmWalletMove.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmWalletMove.Designer.cs">
+      <DependentUpon>frmWalletMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmWalletsManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainFrm\Frm\frmWalletsManagement.Designer.cs">
+      <DependentUpon>frmWalletsManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptBankMove.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptBankMove.Designer.cs">
+      <DependentUpon>rptBankMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\rptSafeMove.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSafeMove.Designer.cs">
+      <DependentUpon>rptSafeMove.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\Classes\FillComboBox.cs" />
+    <Compile Include="Services\Classes\MaxId.cs" />
+    <Compile Include="Services\Classes\SequenceNo.cs" />
+    <Compile Include="Services\Classes\UserMove.cs" />
+    <Compile Include="Services\Interfaces\GetSequenceNo.cs" />
+    <Compile Include="Services\Interfaces\IFillComboBox.cs" />
+    <Compile Include="Services\Interfaces\IMaxId.cs" />
+    <Compile Include="Services\Interfaces\IUserMove.cs" />
+    <EmbeddedResource Include="AccountFrm\Frm\frmAccountTree.resx">
+      <DependentUpon>frmAccountTree.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmAddEditBank.resx">
+      <DependentUpon>frmAddEditBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmAddEditSafe.resx">
+      <DependentUpon>frmAddEditSafe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmAddEditWallet.resx">
+      <DependentUpon>frmAddEditWallet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmBankMove.resx">
+      <DependentUpon>frmBankMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmBanksManagement.resx">
+      <DependentUpon>frmBanksManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmBranch.resx">
+      <DependentUpon>frmBranch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmCurrency.resx">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmSafesManagement.resx">
+      <DependentUpon>frmSafesManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmSafesMove.resx">
+      <DependentUpon>frmSafesMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmWalletMove.resx">
+      <DependentUpon>frmWalletMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainFrm\Frm\frmWalletsManagement.resx">
+      <DependentUpon>frmWalletsManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Reports\rptBankMove.resx">
+      <DependentUpon>rptBankMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSafeMove.resx">
+      <DependentUpon>rptSafeMove.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="App.config" />
+    <None Include="Dataset\dsMove.xsc">
+      <DependentUpon>dsMove.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsMove.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsMove.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsMove.xss">
+      <DependentUpon>dsMove.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Alecive-Flatwoken-Apps-Darktable.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="MainFrm\Classes\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
