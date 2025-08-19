@@ -1,4 +1,5 @@
 ﻿using DataBaseOperations;
+using EPREAGLE.Extensions;
 using EPREAGLE.Helper;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace EPREAGLE.Data
         public string PartnerAccount { get; set; }
         public string CapitalAccount { get; set; }
         public string CapitalBalanceAccount { get; set; }
+        public int OpeningEntryType { get; set; }
         /// <summary>
         /// تحميل بيانات الحسابات من قاعدة البيانات.
         /// عبارة عن الحسابات الأب المختلفة لأغلب العمليات المالية.
@@ -40,7 +42,7 @@ namespace EPREAGLE.Data
                 {
                     con.OpenConnection();
                 }
-                string query = "Select SafeAccount,BankAccount,WalletAccount,CustomerAccount,ImporterAccount,PartnerAccount, CapitalAccount,CapitalBalanceAccount From ACCOUANT.AccountSettings_tbl Where ID = 1";
+                string query = "Select SafeAccount,BankAccount,WalletAccount,CustomerAccount,ImporterAccount,PartnerAccount, CapitalAccount,CapitalBalanceAccount,OpeningEntryType From ACCOUANT.AccountSettings_tbl Where ID = 1";
                 using (SqlCommand command = new SqlCommand(query, con.Connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -55,6 +57,7 @@ namespace EPREAGLE.Data
                             PartnerAccount = reader["PartnerAccount"].ToString();
                             CapitalAccount = reader["CapitalAccount"].ToString();
                             CapitalBalanceAccount = reader["CapitalBalanceAccount"].ToString();
+                            OpeningEntryType = reader["OpeningEntryType"].ToInt();
                         }
                         
                     }

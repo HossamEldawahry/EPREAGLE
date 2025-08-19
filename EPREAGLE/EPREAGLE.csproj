@@ -110,10 +110,18 @@
     <Compile Include="AccountFrm\Frm\frmAccountTree.Designer.cs">
       <DependentUpon>frmAccountTree.cs</DependentUpon>
     </Compile>
+    <Compile Include="AccountFrm\Frm\frmJournalEntry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountFrm\Frm\frmJournalEntry.Designer.cs">
+      <DependentUpon>frmJournalEntry.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountFrm\Services\Classes\FillAccountParents.cs" />
     <Compile Include="AccountFrm\Services\Classes\GetAccountCode.cs" />
     <Compile Include="AccountFrm\Services\Interfaces\IFillAccountParents.cs" />
     <Compile Include="AccountFrm\Services\Interfaces\IGetAccountCode.cs" />
+    <Compile Include="AccountFrm\Services\Interfaces\JournalApprovalManager.cs" />
+    <Compile Include="AccountFrm\Services\Interfaces\JournalManager.cs" />
     <Compile Include="Dataset\dsMove.cs">
       <DependentUpon>dsMove.xsd</DependentUpon>
     </Compile>
@@ -230,6 +238,9 @@
     <EmbeddedResource Include="AccountFrm\Frm\frmAccountTree.resx">
       <DependentUpon>frmAccountTree.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AccountFrm\Frm\frmJournalEntry.resx">
+      <DependentUpon>frmJournalEntry.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -275,6 +286,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Reports\rptBankMove.resx">
       <DependentUpon>rptBankMove.cs</DependentUpon>
@@ -306,6 +318,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alecive-Flatwoken-Apps-Darktable.ico" />
+    <None Include="Resources\prev.svg" />
+    <None Include="Resources\next.svg" />
+    <None Include="Resources\doublefirst.svg" />
+    <None Include="Resources\doublelast.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="MainFrm\Classes\" />

@@ -31,6 +31,7 @@ namespace EPREAGLE.MainFrm.Frm
         IGetAccountCode getAccountCode = new GetAccountCode();
         IFillComboBox fillComboBox = new FillComboBox();
         IUserMove userMove = new UserMove();
+        JournalManager entry;
         public frmAddEditSafe(bool _isEditMode = false,int Id = -1)
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace EPREAGLE.MainFrm.Frm
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             con = new DatabaseConnection(Conn.str);
             oper = new DatabaseOperation(con);
+            entry = new JournalManager(con,oper);
             txtBalance.Enabled = !_isEditMode;
             LoadData(_isEditMode, Id);
         }
@@ -195,63 +197,6 @@ namespace EPREAGLE.MainFrm.Frm
 
             oper.InsertWithTransaction("FIANCE.SafeMove_tbl", safeFirstMove);
         }
-        private void CreateOpeningJournalEntry(Dictionary<string, object> safeData, Dictionary<string, object> accountData, decimal initialBalance)
-        {
-            bool isDebit = initialBalance > 0;
-
-            var journalHeader = new Dictionary<string, object>
-                                    {
-                                        { "ID", GetMaxId.MaxId("ACCOUANT.JournalEntries_tbl", "ID") + 1 },
-                                        { "EntryNumber", sequenceNo.GeneratePrefixNumber("EntryNumber", "ACCOUANT.JournalEntries_tbl", "ID", "JRNL") },
-                                        { "EntryDate", DateTime.Now },
-                                        { "Description", $"رصيد أول مدة ل{txtName.Text}" },
-                                        { "EntryReference", sequenceNo.GeneratePrefixNumber("EntryReference", "ACCOUANT.JournalEntries_tbl", "ID", "JRNL") },
-                                        { "EntryTypeId", 3 },
-                                        { "IsPosted", 1 },
-                                        { "PostedDate", DateTime.Now },
-                                        { "CreatedBy", User.UserId },
-                                        { "CreatedDate", DateTime.Now },
-                                        { "ApprovedBy", User.UserId },
-                                        { "ApprovedDate", DateTime.Now },
-                                        { "TotalDebit", Math.Abs(initialBalance) },
-                                        { "TotalCredit", Math.Abs(initialBalance) },
-                                    };
-
-            oper.InsertWithTransaction("ACCOUANT.JournalEntries_tbl", journalHeader);
-
-            AddJournalDetail(journalHeader["ID"], safeData["SafeAccount"], isDebit ? initialBalance : 0, !isDebit ? Math.Abs(initialBalance) : 0);
-            AddJournalDetail(journalHeader["ID"], this.accountData.CapitalAccount, !isDebit ? initialBalance : 0, isDebit ? initialBalance : 0);
-
-            userMove.LogUserMove($"قام المستخدم {User.FullName} بإنشاء قيد محاسبى افتتاحي رقم {journalHeader["EntryNumber"]}");
-            userMove.LogUserMove($"قام المستخدم {User.FullName} بإعتماد قيد محاسبى افتتاحي رقم {journalHeader["EntryNumber"]}");
-        }
-        private void AddJournalDetail(object journalId, object accountCode, decimal debit, decimal credit)
-        {
-            var detail = new Dictionary<string, object>
-                            {
-                                { "JournalHeaderID", journalId },
-                                { "AccountCode", accountCode },
-                                { "DebitAmount", debit },
-                                { "CreditAmount", credit },
-                                { "Description", $"رصيد أول مدة ل{txtName.Text}" }
-                            };
-
-            oper.InsertWithTransaction("ACCOUANT.JournalDetails_tbl", detail);
-        }
-        private void UpdateAccountBalance(Dictionary<string, object> safeData, decimal initialBalance)
-        {
-            var updateData = new Dictionary<string, object>
-                                {
-                                    { "AccountCode", safeData["SafeAccount"] },
-                                    { "FirstValue", initialBalance },
-                                    { "DepitValue", initialBalance > 0 ? initialBalance : 0 },
-                                    { "CreditValue", initialBalance < 0 ? Math.Abs(initialBalance) : 0 },
-                                    { "ModifyBy", User.UserId },
-                                    { "ModifyIn", DateTime.Now }
-                                };
-
-            oper.UpdateWithTransaction("ACCOUANT.Accounts_tbl", updateData, $"AccountCode = '{safeData["SafeAccount"]}'");
-        }
         private void SavenewSafe()
         {
             try
@@ -274,8 +219,8 @@ namespace EPREAGLE.MainFrm.Frm
                 LogUserSafeCreation(safeData);
 
                 // 3. إنشاء الحساب المحاسبي للخزينة
-                var accountData = CreateAccountData(safeData);
-                oper.InsertWithTransaction("ACCOUANT.Accounts_tbl", accountData);
+                var account = CreateAccountData(safeData);
+                oper.InsertWithTransaction("ACCOUANT.Accounts_tbl", account);
 
                 // تسجيل إنشاء الحساب المحاسبي
                 LogUserAccountCreation(safeData);
@@ -286,8 +231,11 @@ namespace EPREAGLE.MainFrm.Frm
                 // 5. إذا كان هناك رصيد أولي، يتم إنشاء القيد المحاسبي
                 if (initialBalance != 0)
                 {
-                    CreateOpeningJournalEntry(safeData, accountData, initialBalance);
-                    UpdateAccountBalance(safeData, initialBalance);
+                    bool isDebit = initialBalance > 0;
+                    int HeaderID = entry.CreateJournalEntryWithTransiction(initialBalance, $"رصيد أول مدة ل{txtName.Text}", accountData.OpeningEntryType);
+                    entry.CreateJournalDetailsWithTransiction(HeaderID, safeData["SafeAccount"], isDebit ? initialBalance : 0, !isDebit ? Math.Abs(initialBalance) : 0, $"رصيد أول مدة ل{txtName.Text}");
+                    entry.CreateJournalDetailsWithTransiction(HeaderID, accountData.CapitalAccount, !isDebit ? Math.Abs(initialBalance) : 0, isDebit ? Math.Abs(initialBalance) : 0, $"رصيد أول مدة ل{txtName.Text}");
+                    userMove.LogUserMove($"قام المستخدم {User.FullName} بإنشاء قيد محاسبى افتتاحي رقم {HeaderID}");
                 }
 
                 // إنهاء المعاملة بنجاح

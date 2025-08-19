@@ -32,6 +32,30 @@ namespace EPREAGLE.Extensions
 
             throw new ArgumentException($"القيمة '{input}' ليست رقم صحيح.");
         }
+        public static int ToInt(this object input)
+        {
+            if (input == null)
+                throw new ArgumentNullException(nameof(input), "القيمة المدخلة null");
+
+            // لو أصلاً القيمة رقم (int, double, decimal...)
+            if (input is IConvertible)
+            {
+                try
+                {
+                    return Convert.ToInt32(input);
+                }
+                catch
+                {
+                    throw new ArgumentException($"القيمة '{input}' ليست رقم صحيح.");
+                }
+            }
+
+            // آخر محاولة: جرب نحولها من string
+            if (int.TryParse(input.ToString(), out int result))
+                return result;
+
+            throw new ArgumentException($"القيمة '{input}' ليست رقم صحيح.");
+        }
         //جمع
         public static decimal AddValue(this object value1,object value2) 
             => value1.ToNumber() + value2.ToNumber();

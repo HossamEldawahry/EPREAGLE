@@ -18,7 +18,22 @@ namespace EPREAGLE
             InitializeComponent();
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
+        private void OpenForm<T>(Func<T> formFactory) where T : DevExpress.XtraEditors.XtraForm
+        {
+            // لو الفورم مفتوح بالفعل، أظهره فقط
+            var existingForm = this.MdiChildren.FirstOrDefault(f => f is T);
+            if (existingForm != null)
+            {
+                existingForm.Activate();
+                return;
+            }
 
+            // إنشاء فورم جديد
+            var form = formFactory();
+            form.MdiParent = this;
+            xtraTabbedMdiManager1.FloatForms.Add(form);
+            form.Show();
+        }
         private void btnCurrency_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             // Create a new instance of the frmCurrency form
@@ -62,34 +77,23 @@ namespace EPREAGLE
 
         private void btnBanksManagement_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmBanksManagement frm = new frmBanksManagement();
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmBanksManagement());
         }
 
         private void btnSafesManagement_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmSafesManagement frm = new frmSafesManagement();
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmSafesManagement());
         }
 
         private void btnBanksMove_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmBankMove frm = new frmBankMove(DateTime.Today,DateTime.Today.AddHours(24));
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmBankMove(DateTime.Today, DateTime.Today.AddHours(24)));
+            
         }
 
         private void btnSafeMove_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmSafesMove frm = new frmSafesMove(DateTime.Today, DateTime.Today.AddHours(24));
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmSafesMove(DateTime.Today, DateTime.Today.AddHours(24)));
         }
 
         private void btnAddNewWallet_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -102,18 +106,17 @@ namespace EPREAGLE
 
         private void btnWalletMove_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmWalletMove frm = new frmWalletMove(DateTime.Today, DateTime.Today.AddHours(24));
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmWalletMove(DateTime.Today, DateTime.Today.AddHours(24)));
         }
 
         private void btnWalletManagement_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmWalletsManagement frm = new frmWalletsManagement();
-            frm.MdiParent = this;
-            xtraTabbedMdiManager1.FloatForms.Add(frm);
-            frm.Show();
+            OpenForm(() => new frmWalletsManagement());
+        }
+
+        private void btnJournalEntry_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenForm(() => new frmJournalEntry());
         }
     }
 }

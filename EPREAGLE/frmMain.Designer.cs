@@ -113,7 +113,7 @@
             this.barSubItem9 = new DevExpress.XtraBars.BarSubItem();
             this.btnAccountTree = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem58 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem59 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnJournalEntry = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem61 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem62 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem63 = new DevExpress.XtraBars.BarButtonItem();
@@ -263,7 +263,7 @@
             this.barSubItem9,
             this.btnAccountTree,
             this.barButtonItem58,
-            this.barButtonItem59,
+            this.btnJournalEntry,
             this.barButtonItem60,
             this.barButtonItem61,
             this.barButtonItem62,
@@ -912,7 +912,7 @@
             this.barSubItem9.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnAccountTree),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem58),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem59),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnJournalEntry),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem61),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem62),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem63),
@@ -934,11 +934,12 @@
             this.barButtonItem58.Id = 80;
             this.barButtonItem58.Name = "barButtonItem58";
             // 
-            // barButtonItem59
+            // btnJournalEntry
             // 
-            this.barButtonItem59.Caption = "قيود اليومية";
-            this.barButtonItem59.Id = 81;
-            this.barButtonItem59.Name = "barButtonItem59";
+            this.btnJournalEntry.Caption = "قيود اليومية";
+            this.btnJournalEntry.Id = 81;
+            this.btnJournalEntry.Name = "btnJournalEntry";
+            this.btnJournalEntry.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnJournalEntry_ItemClick);
             // 
             // barButtonItem61
             // 
@@ -1386,7 +1387,7 @@
         private DevExpress.XtraBars.BarSubItem barSubItem9;
         private DevExpress.XtraBars.BarButtonItem btnAccountTree;
         private DevExpress.XtraBars.BarButtonItem barButtonItem58;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem59;
+        private DevExpress.XtraBars.BarButtonItem btnJournalEntry;
         private DevExpress.XtraBars.BarButtonItem barButtonItem60;
         private DevExpress.XtraBars.BarButtonItem barButtonItem61;
         private DevExpress.XtraBars.BarButtonItem barButtonItem62;
